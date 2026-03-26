@@ -1,0 +1,5 @@
+{
+  "name": "Meta Ads Landing Page",
+  "description": "A landing page that redirects to Naver Smart Store with Meta Pixel tracking.",
+  "requestFramePermissions": []
+}
