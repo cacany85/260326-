@@ -19,10 +19,10 @@ export default function App() {
 
     // 2. Technical Redirect Logic
     // Using window.location.replace to prevent back-button loops
-    // 300ms delay ensures Meta Pixel data is sent successfully
+    // 100ms delay ensures Meta Pixel data is sent successfully
     const timer = setTimeout(() => {
       window.location.replace(REDIRECT_URL);
-    }, 300);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
@@ -46,7 +46,7 @@ export default function App() {
         {/* Status Text */}
         <div className="space-y-2">
           <h1 className="text-xl font-bold text-gray-900">
-            상품 페이지로 이동 중
+            상품페이지로 이동중입니다..
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed">
             잠시만 기다려주세요.<br />
