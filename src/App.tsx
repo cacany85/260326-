@@ -58,6 +58,16 @@ export default function App() {
         <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
           <div className="bg-green-500 h-full w-full origin-left animate-[loading_1s_ease-in-out_infinite]"></div>
         </div>
+
+        {/* Manual Redirect Button (Fallback) */}
+        <div className="pt-4">
+          <a
+            href={REDIRECT_URL}
+            className="inline-block w-full py-3 px-6 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-colors shadow-md active:scale-95"
+          >
+            지금 바로 이동하기
+          </a>
+        </div>
       </div>
 
       {/* Trust Footer */}
