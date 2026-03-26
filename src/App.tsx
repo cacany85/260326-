@@ -8,10 +8,13 @@ declare global {
 
 export default function App() {
   const REDIRECT_URL = 'https://smartstore.naver.com/midsen2023/products/11528313271';
-  // Using a high-quality product-related placeholder image
-  const THUMBNAIL_URL = 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop'; 
+  // Using a smaller version of the high-quality product-related placeholder image for faster loading
+  const THUMBNAIL_URL = 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop'; 
 
   useEffect(() => {
+    // Mark React as hydrated to prevent the ultra-fast fallback redirect in index.html
+    (window as any).reactHydrated = true;
+
     // 1. Meta Pixel 'Contact' Event Tracking
     if (window.fbq) {
       window.fbq('track', 'Contact');
@@ -19,12 +22,8 @@ export default function App() {
 
     // 2. Technical Redirect Logic
     // Using window.location.replace to prevent back-button loops
-    // 100ms delay ensures Meta Pixel data is sent successfully
-    const timer = setTimeout(() => {
-      window.location.replace(REDIRECT_URL);
-    }, 100);
-
-    return () => clearTimeout(timer);
+    // 0ms delay ensures Meta Pixel data is sent successfully while transitioning as fast as possible
+    window.location.replace(REDIRECT_URL);
   }, []);
 
   return (
@@ -56,7 +55,7 @@ export default function App() {
 
         {/* Progress Bar Animation */}
         <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
-          <div className="bg-green-500 h-full w-full origin-left animate-[loading_1s_ease-in-out_infinite]"></div>
+          <div className="bg-green-500 h-full w-full origin-left animate-[loading_0.6s_ease-in-out_infinite]"></div>
         </div>
 
         {/* Manual Redirect Button (Fallback) */}
